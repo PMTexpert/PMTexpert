@@ -1,0 +1,679 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>PMT</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="93c3d9c2-a3a8-420e-8dc0-1de1a46e7eb4" class="page sans"><header><h1 class="page-title">PMT</h1><p class="page-description"></p></header><div class="page-body"><h1 id="801258fe-89c8-43ed-b5ab-de30819836d2" class="">Was bedeutet PMT?</h1><p id="9210e998-3e53-4370-8b3d-497d3ebe8628" class="">
+</p><p id="d61bd6b0-0942-472f-a642-dcc9e3a2b4c9" class="">
+</p><p id="46210990-3a07-40e3-abac-d0663004966b" class="">Prozesse, Methoden und Tools (PMT)</p><ul id="43f2dfb3-26a3-4c90-b4d8-5c76a40a89ea" class="toggle"><li><details open=""><summary><strong>P – Prozess</strong>: </summary><p id="9b877830-f7c5-4240-87c9-aa641ae4ea35" class="">Ein Prozess wird allgemein als eine Reihe von miteinander verbundenen Aktivitäten oder Schritten definiert, die ausgeführt werden, um ein bestimmtes Ziel oder Ergebnis zu erreichen. In einem organisatorischen oder betrieblichen Kontext bezieht sich ein Prozess auf eine Abfolge von Aufgaben oder Verfahren, die entworfen sind, um ein spezifisches Ergebnis zu erzielen, wie beispielsweise die Herstellung eines Produktes, die Erbringung einer Dienstleistung oder die Durchführung einer administrativen Funktion.</p><p id="7de8251b-5ac3-49cd-91ed-acfe9a802d3f" class="">Die Schlüsselmerkmale eines Prozesses umfassen:</p><p id="713c2d4e-a167-4f88-95b7-f0a402a7db79" class="">DR ZIRCK IST WARM</p><p id="0bbb1f50-36d2-4689-bb9c-78fd054b6bf5" class="">Wizard Tricks</p><ol type="1" id="a323ba8d-798c-4161-af53-d5e6ffff3ec3" class="numbered-list" start="1"><li><strong>Wiederholbarkeit:</strong> Prozesse sind oft wiederholbar und können standardisiert werden, um Konsistenz und Effizienz zu gewährleisten.</li></ol><ol type="1" id="7cf1b45f-9cee-49b7-a4f2-dfe8d7fdd3e7" class="numbered-list" start="2"><li><strong>Integration:</strong> Prozesse können über verschiedene Abteilungen oder Funktionsbereiche eines Unternehmens oder einer Organisation hinweg integriert werden.</li></ol><ol type="1" id="81d31708-d7db-4ca7-be88-4df985855c50" class="numbered-list" start="3"><li><strong>Zielorientierung:</strong> Jeder Prozess zielt darauf ab, ein spezifisches Ergebnis oder Ziel zu erreichen.</li></ol><ol type="1" id="6b63efed-855e-442f-8403-419f8f65bfad" class="numbered-list" start="4"><li><strong>Anpassungsfähigkeit:</strong> Gute Prozesse sind flexibel und können sich an Veränderungen in der Umgebung, der Technologie oder den Marktanforderungen anpassen. Diese Anpassungsfähigkeit ermöglicht es Organisationen, auf neue Herausforderungen oder Chancen effektiv zu reagieren.</li></ol><ol type="1" id="437b5b61-070c-4680-96ca-4d3e32fa3187" class="numbered-list" start="5"><li><strong>Reihenfolge:</strong> Ein Prozess besteht aus Schritten, die in einer geordneten, logischen Reihenfolge ausgeführt werden.</li></ol><ol type="1" id="83845d42-aa4b-44e2-b27f-f50d89755f6f" class="numbered-list" start="6"><li><strong>Dynamik:</strong> Prozesse können sich im Laufe der Zeit ändern, um sich an neue Bedingungen, Technologien oder Marktanforderungen anzupassen.</li></ol><ol type="1" id="c185c3a5-1961-4e6b-a3de-5fb6b13acb13" class="numbered-list" start="7"><li><strong>Transparenz:</strong> Prozesse sollten so gestaltet sein, dass sie transparent und nachvollziehbar sind. Dies ermöglicht es allen Beteiligten, den Ablauf zu verstehen und bei Bedarf zu überwachen und zu verbessern.</li></ol><ol type="1" id="2491e76a-2d49-4547-81a8-9119e330e919" class="numbered-list" start="8"><li><strong>Ressourcennutzung:</strong> Für die Durchführung eines Prozesses werden Ressourcen wie Zeit, Personal, Materialien und Technologie eingesetzt.</li></ol><ol type="1" id="3ac665d9-4d2a-4e46-98b3-83ed229156d0" class="numbered-list" start="9"><li><strong>Interdependenz:</strong> Prozesse sind oft miteinander verbunden oder abhängig voneinander. Der Output eines Prozesses kann als Input für einen anderen dienen, was eine koordinierte Planung und Ausführung erfordert.</li></ol><ol type="1" id="3b104628-ffc6-4e16-92d4-1268151bcbe6" class="numbered-list" start="10"><li><strong>Compliance:</strong> In vielen Branchen müssen Prozesse bestimmten regulatorischen Anforderungen oder Standards entsprechen. Compliance (Regelkonformität) ist daher ein wichtiges Merkmal, besonders in stark regulierten Sektoren wie der Finanzdienstleistung, dem Gesundheitswesen oder der Produktion.</li></ol><ol type="1" id="e30e2f87-b34c-49c7-883c-2bd70e76fc89" class="numbered-list" start="11"><li><strong>Kundenorientierung:</strong> Viele Prozesse sind direkt oder indirekt darauf ausgerichtet, den Bedürfnissen und Erwartungen der Kunden gerecht zu werden. Dies bedeutet, dass der Prozess so gestaltet sein sollte, dass er einen Mehrwert für den Kunden schafft.</li></ol><ol type="1" id="2af49d89-a0a8-4dc2-b2b8-c1667e37cd6f" class="numbered-list" start="12"><li><strong>Standardisierung:</strong> Viele Prozesse sind standardisiert, was bedeutet, dass sie nach festgelegten Richtlinien oder Best Practices durchgeführt werden. Dies fördert Effizienz, Konsistenz und Qualität in der Ausführung.</li></ol><ol type="1" id="71ffb8cc-3192-4b27-b972-1059ef156766" class="numbered-list" start="13"><li><strong>Messbarkeit:</strong> Ein Prozess kann hinsichtlich seiner Effektivität und Effizienz gemessen und analysiert werden.</li></ol><ol type="1" id="534c97b0-12f0-4cd9-836d-5ac6efffd4a3" class="numbered-list" start="14"><li><strong>Risikomanagement:</strong> Prozesse beinhalten oft das Identifizieren und Managen von Risiken, um sicherzustellen, dass Ziele erreicht werden, ohne unangemessene Gefahren einzugehen.</li></ol><ol type="1" id="ee8db14e-353b-464a-a714-db067906eb70" class="numbered-list" start="15"><li><strong>Kontinuierliche Verbesserung:</strong> Effektive Prozesse sind nicht statisch; sie unterliegen einer kontinuierlichen Überwachung und Verbesserung. Dies folgt dem Prinzip des kontinuierlichen Verbesserungsprozesses (KVP), bei dem regelmäßig nach Möglichkeiten zur Steigerung der Effizienz und Wirksamkeit gesucht wird.</li></ol><p id="efb8726a-3e5e-4b98-bca7-748df450e0c2" class="">Prozesse sind komplexe und dynamische Strukturen, die für das reibungslose und effiziente Funktionieren einer Organisation entscheidend sind. Sie sind entscheidend für die Strukturierung der Arbeitsabläufe und müssen sorgfältig geplant, umgesetzt, überwacht und regelmäßig aktualisiert werden, um ihre Effektivität zu maximieren.</p></details></li></ul><ul id="1f04368a-f2ae-444e-a2dd-bf6e4c2f793e" class="bulleted-list"><li style="list-style-type:disc">M – Methoden: </li></ul><ul id="a87415bb-be12-440a-a8c7-a21e0b8dd868" class="bulleted-list"><li style="list-style-type:disc">T – Tools: </li></ul><h1 id="507901ad-bf99-42d7-b426-3e39d0c42ca6" class="">Warum ist PMT wichtig?</h1><ul id="3e476be8-b375-455d-b62d-3aad9c103916" class="toggle"><li><details open=""><summary>Die Kompetenz eines Unternehmens, hochwertige und sichere Produkte zu fertigen, ist direkt mit seiner Effizienz in der Handhabung von Prozessen, Methoden und Werkzeugen (PMT) sowie der Anwendung neuester Systemtechnologien verknüpft.</summary><p id="5470a737-1424-4a3c-845a-e7b57fd2e8e5" class="">Die Aussage &quot;Die Fähigkeit eines Unternehmens, qualitativ hochwertige und sichere Produkte zu produzieren, hängt von seiner Fähigkeit ab, Prozesse, Methoden, Tools effizient zu verwalten und die neuesten Systemtechnologien zu nutzen&quot; betont die Bedeutung eines umfassenden Managementansatzes in der Produktentwicklung und Fertigung. Die Schlüsselaspekte dieser Aussage sind:</p><ol type="1" id="184e30c4-3a22-4b5e-98b7-3f37b2252aac" class="numbered-list" start="1"><li><strong>Qualität und Sicherheit von Produkten:</strong> Dies sind zentrale Merkmale, die die Wettbewerbsfähigkeit und Marktposition eines Unternehmens beeinflussen. Hochwertige und sichere Produkte erfüllen nicht nur die Erwartungen der Kunden, sondern tragen auch zur Reputation und Vertrauensbildung bei.</li></ol><ol type="1" id="6afd622f-e9dc-4891-818b-2654d353d122" class="numbered-list" start="2"><li><strong>Effiziente Verwaltung von Prozessen, Methoden und Tools:</strong> Dies bezieht sich auf die Fähigkeit eines Unternehmens, seine internen Abläufe zu optimieren. Dazu gehören die Planung, Organisation und Kontrolle aller Aspekte der Produktion – von der Entwurfsphase über die Herstellung bis hin zur Qualitätskontrolle. Eine effiziente Verwaltung sorgt für reibungslose Abläufe, minimiert Fehler und steigert die Effizienz.</li></ol><ol type="1" id="c8f277dc-3624-4b77-a65d-72aebcfac266" class="numbered-list" start="3"><li><strong>Nutzung der neuesten Systemtechnologien:</strong> Der Einsatz fortschrittlicher Technologien ist ein entscheidender Faktor für Innovation und Wettbewerbsfähigkeit. Dies kann moderne Fertigungstechniken, Softwarelösungen, Automatisierung, künstliche Intelligenz und Big-Data-Analysen umfassen. Diese Technologien können Prozesse optimieren, die Produktqualität verbessern und neue Möglichkeiten für Produktinnovationen schaffen.</li></ol><p id="3b1ea9e2-dd36-413a-9187-de10a56f1fe0" class="">Zusammenfassend zeigt die Aussage, dass die Produktion qualitativ hochwertiger und sicherer Produkte nicht nur von fortschrittlichen Technologien abhängt, sondern auch von der effizienten Verwaltung aller beteiligten Prozesse, Methoden und Tools. Dies erfordert ein umfassendes Verständnis und eine kontinuierliche Anpassung an technologische Entwicklungen sowie eine straffe Organisation der internen Abläufe.</p></details></li></ul><h2 id="7bce0a58-202e-4c1a-94c3-8500249cde50" class="">Quellen</h2><p id="de020bda-bb27-4291-8abf-3cc120a2b5a1" class=""><a href="https://blogs.itemis.com/optimiertes-pmt-management-in-der-automobilindustrie">https://blogs.itemis.com/optimiertes-pmt-management-in-der-automobilindustrie</a></p><p id="e5335aff-7c8a-41f0-a9ba-b063c3dbb95e" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
