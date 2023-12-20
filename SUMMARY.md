@@ -1,3 +1,3 @@
 # Table of contents
 
-* [Was geht?](README.md)
+* [Was wird das?](README.md)
