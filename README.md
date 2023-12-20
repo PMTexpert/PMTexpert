@@ -2,8 +2,8 @@
 
 
 
-## Hier möchte ich etwas schreiben, dass alle interessiert.
+## Hier möchte ich etwas schreiben, dass alle interessiert
 
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
+{% content-ref url="kapitel-1/300-hunde-essen-spaghetti/" %}
+[300-hunde-essen-spaghetti](kapitel-1/300-hunde-essen-spaghetti/)
 {% endcontent-ref %}
